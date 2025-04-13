@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 2rem;
+            background: white;
+            margin: 1rem;
+            border-radius: 8px;
+        }
+
+        .room {
+            background: #eee;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        form input, form button {
+            display: block;
+            width: 100%;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+        }
+
+        form button {
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Elite Stay Hotel</h1>
+        <nav>
+            <ul>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#booking">Book Now</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="rooms">
+        <h2>Our Rooms</h2>
+        <div class="room">
+            <h3>Deluxe Room</h3>
+            <p>$150 per night</p>
+        </div>
+        <div class="room">
+            <h3>Executive Suite</h3>
+            <p>$250 per night</p>
+        </div>
+    </section>
+
+    <section id="booking">
+        <h2>Book a Room</h2>
+        <form id="bookingForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="date" id="checkin" required>
+            <input type="date" id="checkout" required>
+            <button type="submit">Book Now</button>
+        </form>
+        <p id="bookingMessage"></p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@elitestay.com</p>
+        <p>Phone: +123 456 7890</p>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("bookingForm");
+            const nameInput = document.getElementById("name");
+            const checkinInput = document.getElementById("checkin");
+            const checkoutInput = document.getElementById("checkout");
+            const message = document.getElementById("bookingMessage");
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const name = nameInput.value;
+                const checkin = checkinInput.value;
+                const checkout = checkoutInput.value;
+
+                if (name && checkin && checkout) {
+                    message.textContent = `Thank you, ${name}. Your booking from ${checkin} to ${checkout} is confirmed.`;
+                    form.reset();
+                } else {
+                    message.textContent = "Please fill in all the fields.";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
